@@ -50,12 +50,15 @@
 
 ## 安装
 
-**方式一：本地 marketplace（推荐，改了随时更新）**
+**方式一：本地 marketplace（推荐，改了随时 `git pull`）**
 
 ```bash
 git clone https://github.com/antianqi/jianying-plugin.git ~/.minimax/plugins/jianying
-mcode plugin add -m local jianying
+mcode plugin list          # 目录扫描会自动装上并启用 ⇒ 应看到 jianying@local enabled
 ```
+
+> `mcode plugin add -m local jianying` 会返回 `LOCAL_PLUGIN_INSTALL_UNSUPPORTED` ——
+> **这是正常的**：local marketplace 是**目录扫描**式的，clone 进去就已经装上了，不需要再 add。
 
 **方式二：等上游合并**
 
@@ -66,8 +69,9 @@ mcode plugin add -m local jianying
 **验证装好了**
 
 ```bash
-mcode plugin list                       # 应看到 jianying@local enabled
-node ~/.minimax/plugins/jianying/scripts/check-env.mjs   # 环境自检：缺什么会指名道姓
+mcode plugin list                                            # jianying@local enabled
+node ~/.minimax/plugins/jianying/scripts/run-verb.mjs --list  # 列出 8 个动词
+node ~/.minimax/plugins/jianying/scripts/check-env.mjs        # 环境自检：缺什么会指名道姓
 ```
 
 ## 8 个动词
